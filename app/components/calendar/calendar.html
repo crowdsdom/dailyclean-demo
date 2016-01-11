@@ -1,0 +1,32 @@
+<div style="padding: 10px;">
+    <div class="calendarHeader">
+        <h4>{{month.format('MMMM')}}</h4>
+        <span>{{month.format('YYYY')}}</span>
+        <ul>
+            <li>
+                <a class='lastMonth' href="javascript:" ng-click="previous()"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            </li>
+            <li>
+                <a class='nextMonth' href="javascript:" ng-click="next()"><span class="glyphicon glyphicon-chevron-right bookNextMonth" data-placement="top" data-toggle="popover" data-content="選擇其他月份"></span></a>
+            </li>
+        </ul>
+    </div>
+
+    <table class="monthlyTable">
+        <tr align=center class="week_text">
+            <th>日</th><th>ㄧ</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th>
+        </tr>
+        <tr class="week" ng-repeat="week in weeks">
+            <td ng-repeat="day in week.days">
+                <a href="javascript:"
+                   ng-click="day.isCurrentMonth ? select(day) : null"
+                   class="choiceDay"
+                   ng-class="{'selectedDate': day.date.isSame(selected), 'disabled': !day.isCurrentMonth}"
+                >
+                    {{day.number}}
+                </a>
+            </td>
+        </tr>
+    </table>
+
+</div>

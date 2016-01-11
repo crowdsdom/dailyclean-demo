@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dailyclean">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"} -->
+    <title>天天清潔 - 台北清潔公司推薦 / 居家清潔 / 清潔服務</title>
+    <meta name="description" content="天天清潔-五星級的乾淨體驗，讓每一次的乾淨，都是輕鬆忘掉煩惱的享受！">
+    <meta name="keywords"
+          content="打掃,家事服務,家事清潔,清潔阿姨,家務清潔,鐘點打掃,打掃阿姨,打掃公司,整理收納,台北清潔公司推薦,居家清潔,裝潢後清潔,清潔服務,天天清潔, 居家清潔, 辦公室清潔, 清潔, 清潔社, 永慶居家服務中心, 永慶房屋, 美國運通, 黑卡, 白金卡, 萬泰銀行, 馬卡龍城市悠遊卡, abc family, audrey媽, christine, 高時薪,打工,兼職,二度就業,媽媽,阿姨,彈性,無經驗,排班彈性,104,1111">
+    <meta name="viewport" content="width=1024">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="css/application-8224a66c4ef228b7654ef84eea427446.css" media="all" rel="stylesheet"/>
+
+    <link href="css/bootstrap.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="css/responsive.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="css/theme.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="css/fonts.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="css/datepicker.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="css/bootstrap-datetimepicker.min.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="css/smilemedia.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="css/edw_overwrite.css" media="screen" rel="stylesheet" type="text/css"/>
+
+    <!-- crowdsdom begin -->
+    <link href="components/calendar/calendar.css" rel="stylesheet" type="text/css"/>
+    <link href="components/myProgress/myProgress.css" rel="stylesheet" type="text/css"/>
+    <link href="components/navigation/navigation.css" rel="stylesheet" type="text/css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="components/calendar/calendar.js"></script>
+    <script src="components/myProgress/myProgress.js"></script>
+    <script src="components/dailyclean.js"></script>
+    <!-- crowdsdom end -->
+
+    <!-- DailyClean -->
+    <script src="js/DailyClean.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>線上預約</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <my-progress ng-model="progress" steps="steps"></my-progress>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form accept-charset="UTF-8" action="/orders" class="simple_form new_order" id="form" js_check_form="1"
+                  method="post"
+                  novalidate="novalidate" _lpchecked="1">
+
+                <!-- Step 1 -->
+                <div ng-show="progress==0">
+                    <div class="span3"></div>
+                    <div class="span9">
+                        * 必填欄位<br><br>
+
+                        <span class="emphasize">請問您是「初次」預約，還是「再次」預約？</span><br>
+
+
+                        <div class="control-group radio_buttons optional order_is_old_customer"><label
+                                class="radio_buttons optional control-label"></label>
+                            <div class="controls"><label class="radio" for="order_is_old_customer_false"><input
+                                    checked="checked"
+                                    class="radio_buttons optional"
+                                    id="order_is_old_customer_false"
+                                    name="order[is_old_customer]"
+                                    type="radio"
+                                    value="false">初次預約 ( 歡迎新朋友，想多認識您一下
+                                )</label><label class="radio" for="order_is_old_customer_true"><input
+                                    class="radio_buttons optional"
+                                    id="order_is_old_customer_true"
+                                    name="order[is_old_customer]" type="radio"
+                                    value="true">再次預約 ( 嘿，好朋友，當然要讓您更方便囉
+                                )</label></div>
+                        </div>
+
+                        <br><span class="emphasize">您想要的服務是？</span><br><br>
+
+
+                        <input checked="checked" id="service_type_normal" name="order[service_type]"
+                               style="width:30px;"
+                               type="radio" value="once">
+                        居家清潔
+                        <br>
+
+                        <div id="serviceLevelLongterm"
+                             style="padding-left: 30px; padding-top: 10px; padding-bottom: 10px;">
+                            <input id="service_level_0" name="order[service_level]" style="width:30px;"
+                                   type="radio"
+                                   value="0"> <span class="emphasize"><b>100 分鐘：</b></span> 2 位清潔專家，2490 元：
+                            <div style="padding-left: 110px; padding-top: 15px;">適合定期有清潔。屋齡10年以下、或坪數 &lt;
+                                30坪的客戶
+                            </div>
+                            <br>
+
+                            <input checked="checked" id="service_level_1" name="order[service_level]"
+                                   style="width:30px;"
+                                   type="radio" value="1"> <span class="emphasize"><b>200 分鐘：</b></span> 2
+                            位清潔專家，4980 元：
+                            <div style="padding-left: 110px; padding-top: 15px;">適合初次體驗清潔服務。屋齡10年以上、或坪數 &gt;
+                                30坪的客戶
+                            </div>
+                            <br>
+
+                            <input id="service_level_longterm" name="order[service_level]" style="width:30px;"
+                                   type="radio"
+                                   value="longterm"> <span class="emphasize"><b>長期優惠：</b> 居家清潔：買服務券 20 張，49800 元，每張可兌換「100分鐘」服務，<span
+                                style="color:red;">免費送 2 張，現賺 4980 元！</span></span>
+                            <div style="padding-left: 110px; padding-top: 15px;"><span
+                                    style="color:red;"><b>「０風險」承諾</b></span>：請放心，我們承諾，購買後的
+                                1 個月內，無條件按照「禮券張數」退費。
+                            </div>
+                        </div>
+
+                        <div id="serviceLevelOnce"
+                             style="display: none; padding-left: 30px; padding-top: 10px; padding-bottom: 10px;">
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div ng-show="progress==1">
+                    <div class="span3"></div>
+                    <div class="span9">
+                        <div class="control-group string required order_name"><label
+                                class="string required control-label"
+                                for="order_name"><abbr
+                                title="required">*</abbr> 完整姓名</label>
+                            <div class="controls"><input class="string required" id="order_name" js_check="1"
+                                                         name="order[name]" type="text"
+                                                         style="cursor: pointer; background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                            </div>
+                        </div>
+                        <div class="control-group tel required order_phone"><label
+                                class="tel required control-label"
+                                for="order_phone"><abbr title="required">*</abbr>
+                            電話</label>
+                            <div class="controls"><input class="string tel required" id="order_phone"
+                                                         js_check="1"
+                                                         name="order[phone]" type="tel"></div>
+                        </div>
+                        <div class="control-group string optional order_address" not_for_old_customer="1"><label
+                                class="string optional control-label" for="order_address">*完整地址</label>
+                            <div class="controls"><input class="string optional" id="order_address" js_check="1"
+                                                         name="order[address]" type="text"></div>
+                        </div>
+
+                        <div class="control-group string required order_address" not_for_old_customer="1">
+                            <label class="string required control-label" for="order_address"><abbr
+                                    title="required">*</abbr>鄰近的捷運站？</label>
+
+                            <select id="mrt_site"
+                                    onchange="DailyClean.mrt_line_to_sites( $(this).val(), $('#order_mrt_site_id'), $('#order_service_type_decoration').prop('checked') );"
+                                    js_check="1">
+                                <option value="" selected="">--請選擇捷運線--</option>
+                                <option value="6">淡水信義線</option>
+                                <option value="7">松山新店線</option>
+                                <option value="8">板南線</option>
+                                <option value="9">文湖線</option>
+                                <option value="10">中和新蘆線</option>
+                            </select>
+
+                            &nbsp;&nbsp;<select class="select optional" id="order_mrt_site_id" js_check="1"
+                                                name="order[mrt_site_id]" selected="selected">
+                            <option selected="selected" value="">--請選擇捷運站--</option>
+                        </select>
+                            <p class="help-block" id="far_hint" style="display: none;">標示 *
+                                的範圍，由於路途往返較遠，我們會酌收每人單日100元的車馬費補貼，請同意後再下單。</p>
+                        </div>
+
+
+                        <div class="control-group email optional order_email"><label
+                                class="email optional control-label"
+                                for="order_email">*電子郵件</label>
+                            <div class="controls"><input class="string email optional" id="order_email"
+                                                         js_check="1"
+                                                         name="order[email]" type="email"></div>
+                        </div>
+
+                        <div id="receiverInfo" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div ng-show="progress==2">
+                    <div class="span3"></div>
+                    <div class="span9">
+                        <div id="dateTime" style="">
+                            <div class="control-group string optional order_clean_date"><label
+                                    class="string optional control-label" for="clean_date">預約日期</label>
+                                <div class="controls"><input class="string optional"
+                                                             data-date-format="yyyy-mm-dd"
+                                                             id="clean_date" name="order[clean_date]"
+                                                             type="text">
+                                    <p class="help-block"><span
+                                            style="color:red; font-size:12pt;">請填下您希望的預約日期，客服會再與您確認！</span><br><br>*
+                                        由於可能您填表的時段已經客滿，所以當您填完訂單，您可選擇撥打客服電話 02-2511-9963 確認時段，<br>或，<span
+                                                class="emphasize">客服人員會在「工作日時間」主動跟您確認預約時段</span>，謝謝。<br><br><span
+                                                class="emphasize">* 若需更動施作時間，請至少於「3 個工作日前」通知客服人員，<br>避免無意間影響到辛勞的清潔專家，當日臨時空班、而沒有收入，謝謝。</span><br><br>
+                                    </p></div>
+                            </div>
+
+
+                            <div>
+                                <b>特別適合</b>：<span class="emphasize">愛乾淨，想要「定期預約」的您！</span> <br>
+                                想獨享專屬於您的居家清潔體驗？ <br>
+                                我們為定期預約的您，提供最像好朋友默契的客製化服務！<br>
+                            </div>
+                            <br>
+
+                            <div class="control-group radio_buttons optional order_is_want_longterm"><label
+                                    class="radio_buttons optional control-label"><span
+                                    class="emphasize">請問您有「定期預約」的需求？</span></label>
+                                <div class="controls"><label class="radio"><input class="radio_buttons optional"
+                                                                                  id="order_is_want_longterm_true"
+                                                                                  name="order[is_want_longterm]"
+                                                                                  type="radio"
+                                                                                  value="true">是的，需要「定期預約」。</label><label
+                                        class="radio"><input checked="checked" class="radio_buttons optional"
+                                                             id="order_is_want_longterm_false"
+                                                             name="order[is_want_longterm]" type="radio"
+                                                             value="false">不用，目前只需要「單次」服務。</label>
+                                </div>
+                            </div>
+
+
+                            <div id="service_price_level_1" style="display: none;">
+                                <span class="emphasize">預約時間 * </span><br>
+                            </div>
+
+                            <div id="service_price_level_2" style="">
+                                <span class="emphasize">預約時間 * </span><br>
+                            </div>
+
+                            <div id="service_level1_time" style="display: none;">
+                                <div class="morning">
+                                    <input id="order_detailed_time_0" name="order[detailed_time]"
+                                           style="width:30px;"
+                                           type="radio" value="0">早班 9:00 - 10:40
+                                </div>
+                                <div>
+                                    <input id="order_detailed_time_1" name="order[detailed_time]"
+                                           style="width:30px;"
+                                           type="radio" value="1">午班 2:00 - 3:40
+                                </div>
+                                <div>
+                                    <input id="order_detailed_time_2" name="order[detailed_time]"
+                                           style="width:30px;"
+                                           type="radio" value="2">晚班 5:30 - 7:10
+                                </div>
+
+                            </div>
+
+                            <div id="service_level2_time" style="">
+                                <div class="morning">
+                                    <input id="order_detailed_time_3" name="order[detailed_time]"
+                                           style="width:30px;"
+                                           type="radio" value="3">早班 9:00 - 12:20
+                                </div>
+
+                                <div>
+                                    <input id="order_detailed_time_4" name="order[detailed_time]"
+                                           style="width:30px;"
+                                           type="radio" value="4">午班 2:00 - 5:20
+                                </div>
+
+                            </div>
+
+                            <div class="control-group check_boxes optional job_job_periods_period">
+                                <label class="check_boxes optional control-label">*希望預約時段 (可複選)：</label>
+
+                                <div class="controls">
+                                    <label class="checkbox inline"><input class="check_boxes optional"
+                                                                          rel="wish_wday"
+                                                                          name="wish_wday[]" type="checkbox"
+                                                                          value="週一">週一</label>
+                                    <label class="checkbox inline"><input class="check_boxes optional"
+                                                                          rel="wish_wday"
+                                                                          name="wish_wday[]" type="checkbox"
+                                                                          value="週二">週二</label>
+                                    <label class="checkbox inline"><input class="check_boxes optional"
+                                                                          rel="wish_wday"
+                                                                          name="wish_wday[]" type="checkbox"
+                                                                          value="週三">週三</label>
+                                    <label class="checkbox inline"><input class="check_boxes optional"
+                                                                          rel="wish_wday"
+                                                                          name="wish_wday[]" type="checkbox"
+                                                                          value="週四">週四</label>
+                                    <label class="checkbox inline"><input class="check_boxes optional"
+                                                                          rel="wish_wday"
+                                                                          name="wish_wday[]" type="checkbox"
+                                                                          value="週五">週五</label>
+                                    <label class="checkbox inline"><input class="check_boxes optional"
+                                                                          rel="wish_wday"
+                                                                          name="wish_wday[]" type="checkbox"
+                                                                          value="週六">週六</label>
+                                </div>
+                            </div>
+
+                            <div class="control-group hidden job_job_periods_week_day">
+                                <div class="controls">
+                                    <input class="hidden" id="job_job_periods_attributes_0_week_day"
+                                           name="job[job_periods_attributes][0][week_day]" type="hidden"
+                                           value="1">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div ng-show="progress==3">
+                    <div class="span3"></div>
+                    <div class="span9">
+                        <div id="room_info" style="">
+
+                            <div not_for_old_customer="1">
+
+                                <div>
+                                    *自備吸塵器：
+                                    <input checked="checked" id="order_has_vacuum_cleaner_true"
+                                           name="order[has_vacuum_cleaner]" style="width:20px;" type="radio"
+                                           value="true"> 有
+                                    <input id="order_has_vacuum_cleaner_false" name="order[has_vacuum_cleaner]"
+                                           style="width:20px;" type="radio" value="false"> 無
+                                </div>
+
+                                <br style="clear: both;">
+
+                                <div>
+                                    *自備拖把：
+                                    <input checked="checked" id="order_has_mop_true" name="order[has_mop]"
+                                           style="width:20px;" type="radio" value="true"> 有
+                                    <input id="order_has_mop_false" name="order[has_mop]" style="width:20px;"
+                                           type="radio"
+                                           value="false"> 無
+                                </div>
+
+                                <br style="clear: both;">
+
+                                <div>
+                                    *自備抹布：&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input checked="checked" id="order_has_rag_true" name="order[has_rag]"
+                                           style="width:20px;" type="radio" value="true"> 有
+                                    <input id="order_has_rag_false" name="order[has_rag]" style="width:20px;"
+                                           type="radio"
+                                           value="false"> 無
+                                </div>
+
+                                <br style="clear: both;">
+
+                                <div class="control-group integer optional order_room_size">
+                                    <div class="controls">
+                                        *坪數： <input id="order_room_size" name="order[room_size]"
+                                                    onblur="check_room_size();"
+                                                    style="width: 50px;" type="text">
+                                        坪
+                                    </div>
+                                </div>
+                                <div class="control-group integer optional order_room_count">
+                                    <div class="controls">
+                                        *格局： <input id="order_room_count" name="order[room_count]"
+                                                    style="width: 50px;"
+                                                    type="text">
+                                        間房 <input id="order_bathroom_count" name="order[bathroom_count]"
+                                                  style="width: 50px;" type="text"> 間浴室
+                                    </div>
+                                </div>
+
+                                <div>
+                                    *屋齡：
+                                    <input checked="checked" id="order_room_age_5" name="order[room_age]"
+                                           style="width:20px;" type="radio" value="5">5年以下
+                                    <input id="order_room_age_5_10" name="order[room_age]" style="width:20px;"
+                                           type="radio"
+                                           value="5_10">5-10年
+                                    <input id="order_room_age_10_20" name="order[room_age]" style="width:20px;"
+                                           type="radio"
+                                           value="10_20"> 10-20年
+                                    <input id="order_room_age_20_30" name="order[room_age]" style="width:20px;"
+                                           type="radio"
+                                           value="20_30"> 20-30年
+                                    <input id="order_room_age_30" name="order[room_age]" style="width:20px;"
+                                           type="radio"
+                                           value="30"> 30 年以上
+                                </div>
+
+                                <br>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div ng-show="progress==4">
+                    <div class="span3"></div>
+                    <div class="span9">
+
+                        <div>
+                            *請問您如何得知天天清潔？ <br>
+
+                            <div style="padding-left: 15px;">
+                                <input checked="checked" id="know_us_keyword" name="order[know_us]"
+                                       style="width:20px;" type="radio" value="keyword">
+                                網路搜尋，我輸入的關鍵字：
+                                <input id="order_know_us_keyword" name="order[know_us_keyword]"
+                                       style="width: 50px;"
+                                       type="text">
+                                <br><input id="know_us_old_customer" name="order[know_us]"
+                                           style="width:20px;"
+                                           type="radio" value="old_customer">
+                                客戶推薦：親友已經是「天天清潔」客戶
+                                <br><input id="know_us_old_customer" name="order[know_us]"
+                                           style="width:20px;"
+                                           type="radio" value="friend">
+                                親友推薦：親友還不是「天天清潔」客戶
+
+                                <br><input id="order_know_us_ae_black" name="order[know_us]"
+                                           style="width:20px;"
+                                           type="radio" value="ae_black"> 美國運通：我是黑卡會員
+                                <br><input id="order_know_us_ae_white" name="order[know_us]"
+                                           style="width:20px;"
+                                           type="radio" value="ae_white"> 美國運通：我是白金卡會員
+                                <br><input id="order_know_us_facebook" name="order[know_us]"
+                                           style="width:20px;"
+                                           type="radio" value="facebook"> Facebook 臉書口碑
+                                <br><input id="order_know_us_yelp" name="order[know_us]"
+                                           style="width:20px;"
+                                           type="radio" value="yelp"> Yelp 口碑
+                                <br><input id="know_us_other" name="order[know_us]" style="width:20px;"
+                                           type="radio"
+                                           value="other">
+                                其他
+                                <input id="order_know_us_other" name="order[know_us_other]"
+                                       style="width: 50px;"
+                                       type="text">
+
+                            </div>
+                        </div>
+
+                        <br>
+                        <div>
+                            <span class="emphasize">*請問您希望的「付款方式」？</span> <br>
+
+                            <div style="padding-left: 15px;">
+                                <br>
+                                <input checked="checked" id="order_payment_" name="order[payment]"
+                                       style="width:20px;"
+                                       type="radio" value="當日付現"> 當日付現
+                                <br><input id="payment_atm" name="order[payment]" style="width:20px;"
+                                           type="radio"
+                                           value="銀行匯款">銀行匯款，請填寫匯款帳號的後5碼 <input id="order_bank5code"
+                                                                                name="order[bank5code]"
+                                                                                style="width: 50px;"
+                                                                                type="text">，方便為您確認是本人。
+
+
+                            </div>
+
+                            <br>
+                        </div>
+
+                        <div class="control-group text optional order_note"><label
+                                class="text optional control-label"
+                                for="order_note">歡迎提供您特別在意的清潔需求：<br>
+                            <div style="font-size:14px;">* 有危險性的清潔工作恕不在服務範圍內（如拆裝窗戶、清潔外部窗戶等）
+                                建議您先閱讀「服務特色」裡的注意事項。
+                            </div>
+                        </label>
+                            <div class="controls"><textarea class="text optional" cols="10" id="order_note"
+                                                            name="order[note]" rows="5"></textarea></div>
+                        </div>
+
+
+                        <br>
+
+                        <p style="font-size: 20px;line-height: 150%;">注意事項</p>
+                        <ul style="font-size: 12px;">
+                            <li>服務範圍：「台北市」、「新北市捷運站附近」地區</li>
+                            <li>我們服務入住前、搬遷後的「空屋清潔」；但暫時還「不」服務裝潢後的「裝潢清潔」。</li>
+                            <li>超額補貼：若超過服務範圍，酌收往返車馬費 200 元。晚班若超過 8 點時段，酌收誤餐費 200 元。</li>
+                            <li>不會攜帶：拖把、吸塵器、掃把、特殊專用需求的清潔用品 ( 如沙發、古董 .. )。</li>
+                            <li>不清潔的項目：垃圾清運、洗衣燙衣、沙發、床單、地板打蠟、古董或名牌包保養，吊燈或類似易碎品。<br>
+                                亦不包括具有危險性的部位清潔，如「無立足點」或外側柵欄沒過腰的外部窗戶、拆裝窗戶和有危險性的清潔工作。<br>
+                                以上類似項目均不含在居家清潔服務範圍內，損壞恕不負責。
+                            </li>
+                            <li>賠償上限：清潔專家如造成您損害，以當次報酬之 50 % 為賠償上限，或至多為 2490 元。</li>
+                            <li>「0 風險」承諾的 1 個月內退券計算標準：若退券，則過去服務券張數，以每張原價 2490 元計算，再退回差價。<br>
+                                例如：一個月內，已使用2張券，則退回49800-(2490X2)=44820元
+                            </li>
+                            <li>若需更動施作時間，請至少於「3 個工作日前」通知客服人員，避免無意間影響到辛勞的清潔專家，當日臨時空班、而沒有收入，謝謝您。</li>
+                        </ul>
+
+                        <br>
+                        <div class="emphasize">
+                            ◎ 請您閱讀並已同意「注意事項」，再按「確認送出」，謝謝。 <br>
+                              感謝您，讓我們了解您的清潔需求。 <br>
+                              我們會在 1 個工作日內，致電為您服務喔。
+                        </div>
+
+
+                        <img alt="Button submit" onclick="check_submit();"
+                             src="http://www.dailyclean.com.tw/assets/button_submit.png"
+                             style="height: 174px; width: 175px; cursor: pointer;">
+                        <br>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 50px">
+        <div class="col-md-12 text-center">
+            <button class="btn btnNormal btn-success" ng-click="prevStep()" ng-if="progress>0">上一步</button>
+            <button class="btn btnNormal btn-success" ng-click="nextStep()" ng-if="progress<steps.length-1">下一步</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

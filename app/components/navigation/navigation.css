@@ -1,0 +1,14 @@
+.btnOrange {
+    color: #fefefe;
+    background-color: #ffca05;
+    cursor: pointer
+}
+
+.btnNormal {
+    font-size: 17px;
+    padding: 10px 40px;
+    letter-spacing: 4px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px
+}

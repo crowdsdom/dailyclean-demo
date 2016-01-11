@@ -1,0 +1,12 @@
+<div class="myprogress">
+    <span ng-repeat="step in steps">
+        <div class="circle"
+             ng-class="{'active': progress==$index, 'done': progress>$index}"
+             ng-click="setProgress($index)"
+        >
+            <span class="label">{{$index + 1}}</span>
+            <span class="title">{{step.title}}</span>
+        </div>
+        <span ng-if="!$last" class="bar"></span>
+    </span>
+</div>

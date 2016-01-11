@@ -1,0 +1,75 @@
+.myprogress {
+    margin: 20px auto;
+    text-align: center
+}
+
+.myprogress .circle:hover {
+    cursor: pointer; 
+}
+
+.myprogress .circle, .myprogress .bar {
+    display: inline-block;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    border: 1px solid #d5d5da
+}
+
+.myprogress .bar {
+    position: relative;
+    width: 80px;
+    height: 6px;
+    top: -33px;
+    margin-left: -5px;
+    margin-right: -5px;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0
+}
+
+.myprogress .circle .label {
+    display: inline-block;
+    width: 28px;
+    height: 30px;
+    line-height: 28px;
+    border-radius: 32px;
+    margin-top: 3px;
+    color: #b5b5ba;
+    font-size: 17px
+}
+
+.myprogress .circle .title {
+    color: #b5b5ba;
+    font-size: 13px;
+    line-height: 30px;
+    margin-left: -5px
+}
+
+.myprogress .bar.done, .myprogress .circle.done {
+    background: #eee
+}
+
+.myprogress .bar.active {
+    background: linear-gradient(to right, #EEE 40%, #FFF 60%)
+}
+
+.myprogress .circle.done .label {
+    color: #FFF;
+    background: #79d0db;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2)
+}
+
+.myprogress .circle.done .title {
+    color: #444
+}
+
+.myprogress .circle.active .label {
+    color: #FFF;
+    background: #ffbf00;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2)
+}
+
+.myprogress .circle.active .title {
+    color: #ffca05
+}
