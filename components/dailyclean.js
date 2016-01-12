@@ -5,6 +5,10 @@ angular.module('dailyclean', [
     'dailyclean.myProgress'
 ])
 
+.config(function () {
+    moment.locale('zh-TW');
+})
+
 .run(function ($rootScope) {
     /** Progress */
     $rootScope.progress = 0;
@@ -31,4 +35,8 @@ angular.module('dailyclean', [
 
     /** Calendar */
     $rootScope.calendarSelected = null;
+    $rootScope.cleanDate = '';
+    $rootScope.$watch('calendarSelected', function () {
+        $rootScope.cleanDate = $rootScope.calendarSelected.format('YYYY-MM-DD');
+    });
 });
