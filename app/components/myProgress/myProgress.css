@@ -10,9 +10,9 @@
 .myprogress .circle, .myprogress .bar {
     display: inline-block;
     background: #fff;
-    width: 40px;
-    height: 40px;
-    border-radius: 40px;
+    width: 36px;
+    height: 36px;
+    border-radius: 38px;
     border: 1px solid #d5d5da
 }
 
@@ -31,9 +31,9 @@
 .myprogress .circle .label {
     display: inline-block;
     width: 28px;
-    height: 30px;
-    line-height: 28px;
-    border-radius: 32px;
+    height: 28px;
+    line-height: 24px;
+    border-radius: 28px;
     margin-top: 3px;
     color: #b5b5ba;
     font-size: 17px

@@ -28,12 +28,14 @@
     <link href="css/edw_overwrite.css" media="screen" rel="stylesheet" type="text/css"/>
 
     <!-- crowdsdom begin -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="components/calendar/calendar.css" rel="stylesheet" type="text/css"/>
     <link href="components/myProgress/myProgress.css" rel="stylesheet" type="text/css"/>
     <link href="components/navigation/navigation.css" rel="stylesheet" type="text/css"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment-with-locales.min.js"></script>
     <script src="components/calendar/calendar.js"></script>
     <script src="components/myProgress/myProgress.js"></script>
     <script src="components/dailyclean.js"></script>
@@ -46,14 +48,20 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12 text-center">
-            <h2>線上預約</h2>
+        <div class="col-md-12">
+            <div class="span3"></div>
+            <div class="span9">
+                <h2>線上預約</h2>
+            </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            <my-progress ng-model="progress" steps="steps"></my-progress>
+            <div class="span3"></div>
+            <div class="span9">
+                <my-progress ng-model="progress" steps="steps" class="pull-left"></my-progress>
+            </div>
         </div>
     </div>
 
@@ -200,128 +208,145 @@
 
                 <!-- Step 3 -->
                 <div ng-show="progress==2">
-                    <div class="span3"></div>
-                    <div class="span9">
-                        <div id="dateTime" style="">
-                            <div class="control-group string optional order_clean_date"><label
-                                    class="string optional control-label" for="clean_date">預約日期</label>
-                                <div class="controls"><input class="string optional"
-                                                             data-date-format="yyyy-mm-dd"
-                                                             id="clean_date" name="order[clean_date]"
-                                                             type="text">
-                                    <p class="help-block"><span
-                                            style="color:red; font-size:12pt;">請填下您希望的預約日期，客服會再與您確認！</span><br><br>*
-                                        由於可能您填表的時段已經客滿，所以當您填完訂單，您可選擇撥打客服電話 02-2511-9963 確認時段，<br>或，<span
-                                                class="emphasize">客服人員會在「工作日時間」主動跟您確認預約時段</span>，謝謝。<br><br><span
-                                                class="emphasize">* 若需更動施作時間，請至少於「3 個工作日前」通知客服人員，<br>避免無意間影響到辛勞的清潔專家，當日臨時空班、而沒有收入，謝謝。</span><br><br>
-                                    </p></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="span3"></div>
+                            <div class="span6">
+                                <calendar ng-model="calendarSelected"></calendar>
                             </div>
+                            <div class="span3"></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="span3"></div>
+                            <div class="span9">
+                                <div id="dateTime" style="">
+                                    <div class="control-group string optional order_clean_date"><label
+                                            class="string optional control-label" for="clean_date">預約日期</label>
+                                        <div class="controls">
+                                            <input class="string optional"
+                                                   data-date-format="yyyy-mm-dd"
+                                                   id="clean_date"
+                                                   name="order[clean_date]"
+                                                   type="text"
+                                                   ng-model="cleanDate"/>
+                                            <p class="help-block"><span
+                                                    style="color:red; font-size:12pt;">請填下您希望的預約日期，客服會再與您確認！</span><br><br>*
+                                                由於可能您填表的時段已經客滿，所以當您填完訂單，您可選擇撥打客服電話 02-2511-9963 確認時段，<br>或，<span
+                                                        class="emphasize">客服人員會在「工作日時間」主動跟您確認預約時段</span>，謝謝。<br><br><span
+                                                        class="emphasize">* 若需更動施作時間，請至少於「3 個工作日前」通知客服人員，<br>避免無意間影響到辛勞的清潔專家，當日臨時空班、而沒有收入，謝謝。</span><br><br>
+                                            </p></div>
+                                    </div>
 
 
-                            <div>
-                                <b>特別適合</b>：<span class="emphasize">愛乾淨，想要「定期預約」的您！</span> <br>
-                                想獨享專屬於您的居家清潔體驗？ <br>
-                                我們為定期預約的您，提供最像好朋友默契的客製化服務！<br>
-                            </div>
-                            <br>
+                                    <div>
+                                        <b>特別適合</b>：<span class="emphasize">愛乾淨，想要「定期預約」的您！</span> <br>
+                                        想獨享專屬於您的居家清潔體驗？ <br>
+                                        我們為定期預約的您，提供最像好朋友默契的客製化服務！<br>
+                                    </div>
+                                    <br>
 
-                            <div class="control-group radio_buttons optional order_is_want_longterm"><label
-                                    class="radio_buttons optional control-label"><span
-                                    class="emphasize">請問您有「定期預約」的需求？</span></label>
-                                <div class="controls"><label class="radio"><input class="radio_buttons optional"
-                                                                                  id="order_is_want_longterm_true"
-                                                                                  name="order[is_want_longterm]"
-                                                                                  type="radio"
-                                                                                  value="true">是的，需要「定期預約」。</label><label
-                                        class="radio"><input checked="checked" class="radio_buttons optional"
-                                                             id="order_is_want_longterm_false"
-                                                             name="order[is_want_longterm]" type="radio"
-                                                             value="false">不用，目前只需要「單次」服務。</label>
+                                    <div class="control-group radio_buttons optional order_is_want_longterm"><label
+                                            class="radio_buttons optional control-label"><span
+                                            class="emphasize">請問您有「定期預約」的需求？</span></label>
+                                        <div class="controls"><label class="radio"><input class="radio_buttons optional"
+                                                                                          id="order_is_want_longterm_true"
+                                                                                          name="order[is_want_longterm]"
+                                                                                          type="radio"
+                                                                                          value="true">是的，需要「定期預約」。</label><label
+                                                class="radio"><input checked="checked" class="radio_buttons optional"
+                                                                     id="order_is_want_longterm_false"
+                                                                     name="order[is_want_longterm]" type="radio"
+                                                                     value="false">不用，目前只需要「單次」服務。</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="service_price_level_1" style="display: none;">
+                                        <span class="emphasize">預約時間 * </span><br>
+                                    </div>
+
+                                    <div id="service_price_level_2" style="">
+                                        <span class="emphasize">預約時間 * </span><br>
+                                    </div>
+
+                                    <div id="service_level1_time" style="display: none;">
+                                        <div class="morning">
+                                            <input id="order_detailed_time_0" name="order[detailed_time]"
+                                                   style="width:30px;"
+                                                   type="radio" value="0">早班 9:00 - 10:40
+                                        </div>
+                                        <div>
+                                            <input id="order_detailed_time_1" name="order[detailed_time]"
+                                                   style="width:30px;"
+                                                   type="radio" value="1">午班 2:00 - 3:40
+                                        </div>
+                                        <div>
+                                            <input id="order_detailed_time_2" name="order[detailed_time]"
+                                                   style="width:30px;"
+                                                   type="radio" value="2">晚班 5:30 - 7:10
+                                        </div>
+
+                                    </div>
+
+                                    <div id="service_level2_time" style="">
+                                        <div class="morning">
+                                            <input id="order_detailed_time_3" name="order[detailed_time]"
+                                                   style="width:30px;"
+                                                   type="radio" value="3">早班 9:00 - 12:20
+                                        </div>
+
+                                        <div>
+                                            <input id="order_detailed_time_4" name="order[detailed_time]"
+                                                   style="width:30px;"
+                                                   type="radio" value="4">午班 2:00 - 5:20
+                                        </div>
+
+                                    </div>
+
+                                    <div class="control-group check_boxes optional job_job_periods_period">
+                                        <label class="check_boxes optional control-label">*希望預約時段 (可複選)：</label>
+
+                                        <div class="controls">
+                                            <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                  rel="wish_wday"
+                                                                                  name="wish_wday[]" type="checkbox"
+                                                                                  value="週一">週一</label>
+                                            <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                  rel="wish_wday"
+                                                                                  name="wish_wday[]" type="checkbox"
+                                                                                  value="週二">週二</label>
+                                            <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                  rel="wish_wday"
+                                                                                  name="wish_wday[]" type="checkbox"
+                                                                                  value="週三">週三</label>
+                                            <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                  rel="wish_wday"
+                                                                                  name="wish_wday[]" type="checkbox"
+                                                                                  value="週四">週四</label>
+                                            <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                  rel="wish_wday"
+                                                                                  name="wish_wday[]" type="checkbox"
+                                                                                  value="週五">週五</label>
+                                            <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                  rel="wish_wday"
+                                                                                  name="wish_wday[]" type="checkbox"
+                                                                                  value="週六">週六</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group hidden job_job_periods_week_day">
+                                        <div class="controls">
+                                            <input class="hidden" id="job_job_periods_attributes_0_week_day"
+                                                   name="job[job_periods_attributes][0][week_day]" type="hidden"
+                                                   value="1">
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
-
-                            <div id="service_price_level_1" style="display: none;">
-                                <span class="emphasize">預約時間 * </span><br>
-                            </div>
-
-                            <div id="service_price_level_2" style="">
-                                <span class="emphasize">預約時間 * </span><br>
-                            </div>
-
-                            <div id="service_level1_time" style="display: none;">
-                                <div class="morning">
-                                    <input id="order_detailed_time_0" name="order[detailed_time]"
-                                           style="width:30px;"
-                                           type="radio" value="0">早班 9:00 - 10:40
-                                </div>
-                                <div>
-                                    <input id="order_detailed_time_1" name="order[detailed_time]"
-                                           style="width:30px;"
-                                           type="radio" value="1">午班 2:00 - 3:40
-                                </div>
-                                <div>
-                                    <input id="order_detailed_time_2" name="order[detailed_time]"
-                                           style="width:30px;"
-                                           type="radio" value="2">晚班 5:30 - 7:10
-                                </div>
-
-                            </div>
-
-                            <div id="service_level2_time" style="">
-                                <div class="morning">
-                                    <input id="order_detailed_time_3" name="order[detailed_time]"
-                                           style="width:30px;"
-                                           type="radio" value="3">早班 9:00 - 12:20
-                                </div>
-
-                                <div>
-                                    <input id="order_detailed_time_4" name="order[detailed_time]"
-                                           style="width:30px;"
-                                           type="radio" value="4">午班 2:00 - 5:20
-                                </div>
-
-                            </div>
-
-                            <div class="control-group check_boxes optional job_job_periods_period">
-                                <label class="check_boxes optional control-label">*希望預約時段 (可複選)：</label>
-
-                                <div class="controls">
-                                    <label class="checkbox inline"><input class="check_boxes optional"
-                                                                          rel="wish_wday"
-                                                                          name="wish_wday[]" type="checkbox"
-                                                                          value="週一">週一</label>
-                                    <label class="checkbox inline"><input class="check_boxes optional"
-                                                                          rel="wish_wday"
-                                                                          name="wish_wday[]" type="checkbox"
-                                                                          value="週二">週二</label>
-                                    <label class="checkbox inline"><input class="check_boxes optional"
-                                                                          rel="wish_wday"
-                                                                          name="wish_wday[]" type="checkbox"
-                                                                          value="週三">週三</label>
-                                    <label class="checkbox inline"><input class="check_boxes optional"
-                                                                          rel="wish_wday"
-                                                                          name="wish_wday[]" type="checkbox"
-                                                                          value="週四">週四</label>
-                                    <label class="checkbox inline"><input class="check_boxes optional"
-                                                                          rel="wish_wday"
-                                                                          name="wish_wday[]" type="checkbox"
-                                                                          value="週五">週五</label>
-                                    <label class="checkbox inline"><input class="check_boxes optional"
-                                                                          rel="wish_wday"
-                                                                          name="wish_wday[]" type="checkbox"
-                                                                          value="週六">週六</label>
-                                </div>
-                            </div>
-
-                            <div class="control-group hidden job_job_periods_week_day">
-                                <div class="controls">
-                                    <input class="hidden" id="job_job_periods_attributes_0_week_day"
-                                           name="job[job_periods_attributes][0][week_day]" type="hidden"
-                                           value="1">
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
