@@ -47,6 +47,7 @@
 <body>
 
 <div class="container">
+    <!--
     <div class="row">
         <div class="col-md-12">
             <div class="span3"></div>
@@ -55,11 +56,13 @@
             </div>
         </div>
     </div>
+    -->
 
     <div class="row">
         <div class="col-md-12">
-            <div class="span3"></div>
-            <div class="span9">
+            <div class="span4"></div>
+            <div class="span8">
+                <h2>線上預約</h2>
                 <my-progress ng-model="progress" steps="steps" class="pull-left"></my-progress>
             </div>
         </div>
@@ -75,36 +78,86 @@
                 <div ng-show="progress==0">
                     <div class="span3"></div>
                     <div class="span9">
-                        * 必填欄位<br><br>
 
-                        <span class="emphasize">請問您是「初次」預約，還是「再次」預約？</span><br>
+                        <label class="string optional control-label"><span class="emphasize">哈囉，我們真誠歡迎您！</span></label><br><br>
 
 
                         <div class="control-group radio_buttons optional order_is_old_customer"><label
                                 class="radio_buttons optional control-label"></label>
-                            <div class="controls"><label class="radio" for="order_is_old_customer_false"><input
-                                    checked="checked"
-                                    class="radio_buttons optional"
-                                    id="order_is_old_customer_false"
-                                    name="order[is_old_customer]"
-                                    type="radio"
-                                    value="false">初次預約 ( 歡迎新朋友，想多認識您一下
-                                )</label><label class="radio" for="order_is_old_customer_true"><input
-                                    class="radio_buttons optional"
-                                    id="order_is_old_customer_true"
-                                    name="order[is_old_customer]" type="radio"
-                                    value="true">再次預約 ( 嘿，好朋友，當然要讓您更方便囉
-                                )</label></div>
+                            <div class="controls">
+
+                                <div style="margin: 0 10px;float: left;width: 400px;">
+                                    <img src="img/first.png" width="300">
+                                        <label style="margin:20px;" class="radio" for="order_is_old_customer_false"><input
+                                            checked="checked"
+                                            class="radio_buttons optional"
+                                            id="order_is_old_customer_false"
+                                            name="order[is_old_customer]"
+                                            type="radio"
+                                            value="false" ng-click="setCustomer(true)">歡迎新朋友，想多認識您一下
+                                        </label>
+                                </div>
+                                <div style="width:400px;margin: 0 40px 0 0;float:left">
+                                    <img src="img/old.png" width="300">
+                                    <label style="margin:20px;" class="radio" for="order_is_old_customer_true"><input
+                                        class="radio_buttons optional"
+                                        id="order_is_old_customer_true"
+                                        name="order[is_old_customer]" type="radio"
+                                        value="true" ng-click="setCustomer(false)">嘿，好朋友，當然要讓您更方便囉
+                                    </label>
+                                </div>
+                            </div>
                         </div>
 
-                        <br><span class="emphasize">您想要的服務是？</span><br><br>
+                        <br><label class="string optional control-label"><span class="emphasize">您想要的服務是？</span></label><br>
 
 
-                        <input checked="checked" id="service_type_normal" name="order[service_type]"
-                               style="width:30px;"
+                        <input checked="checked" style="width:20px;" id="service_type_normal" name="order[service_type]"
                                type="radio" value="once">
-                        居家清潔
-                        <br>
+                        居家清潔 (2位一起服務)
+                        <br><br>
+                        <div>
+                            <div style="width:250px;float:left;">
+                                <img src="img/100.png" style="margin:0 25px;">
+                                <br>
+                                <div style="margin:20px 25px;width:200px;">
+                                <input id="service_level_0" name="order[service_level]" style="width:20px;"
+                                   type="radio"
+                                   value="0">
+                                <b>2490 元</b><br><br>適合定期有清潔。屋齡10年以下、或坪數 &lt; 30坪的客戶
+                                </div>
+                            </div>
+
+                            <div style="width:250px;float:left;">
+                                <img src="img/200.png" style="margin:0 25px;">
+                                <br>
+                                <div style="margin:20px 25px;width:200px;">
+                                    <input checked="checked" id="service_level_1" name="order[service_level]" style="width:20px;"type="radio" value="1">
+                                <b>4980 元</b><br><br>適合初次體驗清潔服務。屋齡10年以上、或坪數 &gt; 30坪的客戶
+                                </div>
+                            </div>
+
+                            <div style="width:250px;float:left;">
+                                <img src="img/longterm.png" style="margin:0 25px;">
+                                <br>
+                                <div style="margin:20px 25px;width:200px;">
+                                <input id="service_level_longterm" name="order[service_level]" style="width:20px;"
+                                   type="radio"
+                                   value="longterm">
+                                <b>服務券 20 張，49800 元</b><br><br>每張可兌換「100分鐘」服務，<b>免費送 2 張，現賺 4980 元</b>！<b>「０風險」承諾</b>：請放心，購買後的 1 個月內，無條件按照「禮券張數」退費。
+                                </div>
+                            </div>
+
+                            <div id="serviceLevelOnce"
+                                 style="display: none; padding-left: 30px; padding-top: 10px; padding-bottom: 10px;">
+
+                            </div>
+                       </div>
+
+
+
+
+<!--
 
                         <div id="serviceLevelLongterm"
                              style="padding-left: 30px; padding-top: 10px; padding-bottom: 10px;">
@@ -139,17 +192,20 @@
                              style="display: none; padding-left: 30px; padding-top: 10px; padding-bottom: 10px;">
 
                         </div>
+-->
                     </div>
                 </div>
+
 
                 <!-- Step 2 -->
                 <div ng-show="progress==1">
                     <div class="span3"></div>
                     <div class="span9">
+                        * 必填欄位<br><br>
+
                         <div class="control-group string required order_name"><label
                                 class="string required control-label"
-                                for="order_name"><abbr
-                                title="required">*</abbr> 完整姓名</label>
+                                for="order_name"><span class="emphasize">*完整姓名</span></label>
                             <div class="controls"><input class="string required" id="order_name" js_check="1"
                                                          name="order[name]" type="text"
                                                          style="cursor: pointer; background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
@@ -157,48 +213,139 @@
                         </div>
                         <div class="control-group tel required order_phone"><label
                                 class="tel required control-label"
-                                for="order_phone"><abbr title="required">*</abbr>
-                            電話</label>
+                                for="order_phone"><span class="emphasize">*電話</span></label>
                             <div class="controls"><input class="string tel required" id="order_phone"
                                                          js_check="1"
                                                          name="order[phone]" type="tel"></div>
                         </div>
-                        <div class="control-group string optional order_address" not_for_old_customer="1"><label
-                                class="string optional control-label" for="order_address">*完整地址</label>
-                            <div class="controls"><input class="string optional" id="order_address" js_check="1"
-                                                         name="order[address]" type="text"></div>
-                        </div>
-
-                        <div class="control-group string required order_address" not_for_old_customer="1">
-                            <label class="string required control-label" for="order_address"><abbr
-                                    title="required">*</abbr>鄰近的捷運站？</label>
-
-                            <select id="mrt_site"
-                                    onchange="DailyClean.mrt_line_to_sites( $(this).val(), $('#order_mrt_site_id'), $('#order_service_type_decoration').prop('checked') );"
-                                    js_check="1">
-                                <option value="" selected="">--請選擇捷運線--</option>
-                                <option value="6">淡水信義線</option>
-                                <option value="7">松山新店線</option>
-                                <option value="8">板南線</option>
-                                <option value="9">文湖線</option>
-                                <option value="10">中和新蘆線</option>
-                            </select>
-
-                            &nbsp;&nbsp;<select class="select optional" id="order_mrt_site_id" js_check="1"
-                                                name="order[mrt_site_id]" selected="selected">
-                            <option selected="selected" value="">--請選擇捷運站--</option>
-                        </select>
-                            <p class="help-block" id="far_hint" style="display: none;">標示 *
-                                的範圍，由於路途往返較遠，我們會酌收每人單日100元的車馬費補貼，請同意後再下單。</p>
-                        </div>
-
 
                         <div class="control-group email optional order_email"><label
                                 class="email optional control-label"
-                                for="order_email">*電子郵件</label>
+                                for="order_email"><span class="emphasize">*電子郵件</span></label>
                             <div class="controls"><input class="string email optional" id="order_email"
                                                          js_check="1"
                                                          name="order[email]" type="email"></div>
+                        </div>
+                        <div id="new-customer-info" ng-if="newCustomer">
+                            <div class="control-group string optional order_address" not_for_old_customer="1"><label
+                                    class="string optional control-label" for="order_address"><span class="emphasize">*完整地址</span></label>
+                                <div class="controls"><input class="string optional" id="order_address" js_check="1"
+                                                             name="order[address]" type="text"></div>
+                            </div>
+
+                            <div class="control-group string required order_address" not_for_old_customer="1">
+                                <label class="string required control-label" for="order_address"><span class="emphasize">*鄰近的捷運站？</label>
+
+                                <select id="mrt_site" js_check="1" ng-model="formData.selectedMRT">
+                                    <option value="0">--請選擇捷運線--</option>
+                                    <option value="6">淡水信義線</option>
+                                    <option value="7">松山新店線</option>
+                                    <option value="8">板南線</option>
+                                    <option value="9">文湖線</option>
+                                    <option value="10">中和新蘆線</option>
+                                </select>
+
+                                &nbsp;&nbsp;
+                                <select ng-show="formData.selectedMRT==0" class="select optional" id="order_mrt_site_id_0" js_check="1" name="order[mrt_site_id]" selected="selected">
+                                <option selected="selected" value="">--請選擇捷運站--</option>
+
+                                </select>
+
+                                <select ng-show="formData.selectedMRT==6" class="select optional" id="order_mrt_site_id_6" js_check="1" name="order[mrt_site_id]" selected="selected"><option value="141">* 奇岩</option><option value="142">唭哩岸</option><option value="143">石牌</option><option value="144">明德</option><option value="145">芝山</option><option value="146">士林</option><option value="147">劍潭</option><option value="148">圓山</option><option value="149">民權西路</option><option value="150">雙連</option><option value="151">中山</option><option value="152">台北車站</option><option value="153">臺大醫院</option><option value="154">中正紀念堂</option><option value="155">東門</option><option value="156">大安森林公園</option><option value="157">大安</option><option value="158">信義安和</option><option value="159">台北101/世貿</option><option value="160">象山</option></select>
+
+                                <select ng-show="formData.selectedMRT==7" class="select optional" id="order_mrt_site_id_7" js_check="1" name="order[mrt_site_id]" selected="selected"><option value="161">松山</option><option value="162">南京三民</option><option value="163">台北小巨蛋</option><option value="164">南京復興</option><option value="165">松江南京</option><option value="166">中山</option><option value="167">北門</option><option value="168">西門</option><option value="169">小南門</option><option value="170">中正紀念堂</option><option value="171">古亭</option><option value="172">台電大樓</option><option value="173">公館</option><option value="174">萬隆</option><option value="175">景美</option><option value="176">大坪林</option><option value="177">七張</option></select>
+
+                                <select ng-show="formData.selectedMRT==8" class="select optional" id="order_mrt_site_id_8" js_check="1" name="order[mrt_site_id]" selected="selected"><option value="122">* 海山</option><option value="123">* 亞東醫院</option><option value="124">* 府中</option><option value="125">板橋</option><option value="126">新埔</option><option value="127">江子翠</option><option value="128">龍山寺</option><option value="129">西門</option><option value="130">台北車站</option><option value="131">善導寺</option><option value="132">忠孝新生</option><option value="133">忠孝復興</option><option value="134">忠孝敦化</option><option value="135">國父紀念館</option><option value="136">市政府</option><option value="137">永春</option><option value="138">後山埤</option><option value="139">昆陽</option><option value="140">南港</option></select>
+
+                                <select ng-show="formData.selectedMRT==9" class="select optional" id="order_mrt_site_id_9" js_check="1" name="order[mrt_site_id]" selected="selected"><option value="100">* 萬芳社區</option><option value="101">萬芳醫院</option><option value="102">辛亥</option><option value="103">麟光</option><option value="104">六張犁</option><option value="105">科技大樓</option><option value="106">大安</option><option value="107">忠孝復興</option><option value="108">南京復興</option><option value="109">中山國中</option><option value="110">松山機場</option><option value="111">大直</option><option value="112">劍南路</option><option value="113">西湖</option><option value="114">港墘</option><option value="115">文德</option><option value="116">內湖</option><option value="117">* 大湖公園</option><option value="118">* 葫洲</option><option value="119">* 東湖</option><option value="120">* 南港軟體園區</option><option value="121">* 南港展覽館</option></select>
+
+                                <select ng-show="formData.selectedMRT==10" class="select optional" id="order_mrt_site_id_10" js_check="1" name="order[mrt_site_id]" selected="selected"><option value="178">南勢角</option><option value="179">景安</option><option value="180">永安市場</option><option value="181">頂溪</option><option value="182">古亭</option><option value="183">東門</option><option value="184">忠孝新生</option><option value="185">松江南京</option><option value="186">行天宮</option><option value="187">中山國小</option><option value="188">民權西路</option><option value="189">大橋頭</option><option value="190">三重國小</option><option value="191">三和國中</option><option value="192">台北橋</option><option value="193">菜寮</option><option value="194">三重</option><option value="195">徐匯中學</option><option value="196">* 三民高中</option><option value="197">* 蘆洲</option><option value="198">* 先嗇宮</option><option value="199">* 頭前庄</option><option value="200">* 新莊</option></select>
+                                <p class="help-block" id="far_hint" style="display: none;">標示 *
+                                    的範圍，由於路途往返較遠，我們會酌收每人單日100元的車馬費補貼，請同意後再下單。</p>
+                            </div>
+
+
+                            <div>
+                                <div id="room_info" style="">
+                                    <div not_for_old_customer="1">
+                                        <label class="string optional control-label"><span class="emphasize">*屋況</span></label>
+                                        <br>
+                                        <div>
+                                            *自備吸塵器：
+                                            <input checked="checked" id="order_has_vacuum_cleaner_true"
+                                                   name="order[has_vacuum_cleaner]" style="width:20px;" type="radio"
+                                                   value="true"> 有
+                                            <input id="order_has_vacuum_cleaner_false" name="order[has_vacuum_cleaner]"
+                                                   style="width:20px;" type="radio" value="false"> 無
+                                        </div>
+
+                                        <br style="clear: both;">
+
+                                        <div>
+                                            *自備拖把：
+                                            <input checked="checked" id="order_has_mop_true" name="order[has_mop]"
+                                                   style="width:20px;" type="radio" value="true"> 有
+                                            <input id="order_has_mop_false" name="order[has_mop]" style="width:20px;"
+                                                   type="radio"
+                                                   value="false"> 無
+                                        </div>
+
+                                        <br style="clear: both;">
+
+                                        <div>
+                                            *自備抹布：&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input checked="checked" id="order_has_rag_true" name="order[has_rag]"
+                                                   style="width:20px;" type="radio" value="true"> 有
+                                            <input id="order_has_rag_false" name="order[has_rag]" style="width:20px;"
+                                                   type="radio"
+                                                   value="false"> 無
+                                        </div>
+
+                                        <br style="clear: both;">
+
+                                        <div class="control-group integer optional order_room_size">
+                                            <div class="controls">
+                                                *坪數： <input id="order_room_size" name="order[room_size]"
+                                                            onblur="check_room_size();"
+                                                            style="width: 50px;" type="text">
+                                                坪
+                                            </div>
+                                        </div>
+                                        <div class="control-group integer optional order_room_count">
+                                            <div class="controls">
+                                                *格局： <input id="order_room_count" name="order[room_count]"
+                                                            style="width: 50px;"
+                                                            type="text">
+                                                間房 <input id="order_bathroom_count" name="order[bathroom_count]"
+                                                          style="width: 50px;" type="text"> 間浴室
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            *屋齡：
+                                            <input checked="checked" id="order_room_age_5" name="order[room_age]"
+                                                   style="width:20px;" type="radio" value="5">5年以下
+                                            <input id="order_room_age_5_10" name="order[room_age]" style="width:20px;"
+                                                   type="radio"
+                                                   value="5_10">5-10年
+                                            <input id="order_room_age_10_20" name="order[room_age]" style="width:20px;"
+                                                   type="radio"
+                                                   value="10_20"> 10-20年
+                                            <input id="order_room_age_20_30" name="order[room_age]" style="width:20px;"
+                                                   type="radio"
+                                                   value="20_30"> 20-30年
+                                            <input id="order_room_age_30" name="order[room_age]" style="width:20px;"
+                                                   type="radio"
+                                                   value="30"> 30 年以上
+                                        </div>
+
+                                        <br>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
 
                         <div id="receiverInfo" style="display: none;">
@@ -224,7 +371,8 @@
                             <div class="span9">
                                 <div id="dateTime" style="">
                                     <div class="control-group string optional order_clean_date"><label
-                                            class="string optional control-label" for="clean_date">預約日期</label>
+                                            class="radio_buttons optional control-label"><span
+                                            class="emphasize">*預約日期</label>
                                         <div class="controls">
                                             <input class="string optional"
                                                    data-date-format="yyyy-mm-dd"
@@ -232,111 +380,109 @@
                                                    name="order[clean_date]"
                                                    type="text"
                                                    ng-model="cleanDate"/>
-                                            <p class="help-block"><span
-                                                    style="color:red; font-size:12pt;">請填下您希望的預約日期，客服會再與您確認！</span><br><br>*
-                                                由於可能您填表的時段已經客滿，所以當您填完訂單，您可選擇撥打客服電話 02-2511-9963 確認時段，<br>或，<span
-                                                        class="emphasize">客服人員會在「工作日時間」主動跟您確認預約時段</span>，謝謝。<br><br><span
-                                                        class="emphasize">* 若需更動施作時間，請至少於「3 個工作日前」通知客服人員，<br>避免無意間影響到辛勞的清潔專家，當日臨時空班、而沒有收入，謝謝。</span><br><br>
-                                            </p></div>
+                                        </div>
+                                        <div id="service_price_level_1" style="">
+                                            *預約時間<br>
+                                        </div>
+
+                                        <div id="service_level1_time" style="">
+                                            <div class="morning">
+                                                <input id="order_detailed_time_1" name="order[detailed_time]"
+                                                       style="width:30px;"
+                                                       type="radio" value="3">早班 9:00 - 12:20
+                                            </div>
+
+                                            <div>
+                                                <input id="order_detailed_time_2" name="order[detailed_time]"
+                                                       style="width:30px;"
+                                                       type="radio" value="4">午班 2:00 - 5:20
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <p class="help-block"><span
+                                        class="emphasize">請選擇您希望的預約日期，客服會再與您確認！</span>
+                                            <!--
+                                            <br><br>*
+                                            由於可能您填表的時段已經客滿，所以當您填完訂單，您可選擇撥打客服電話 02-2511-9963 確認時段，<br>或，客服人員會在「工作日時間」主動跟您確認預約時段</span>，謝謝。<br><br>若需更動施作時間，請至少於「3 個工作日前」通知客服人員，<br>避免無意間影響到辛勞的清潔專家，當日臨時空班、而沒有收入，謝謝。
+                                            -->
+                                        </p>
+
                                     </div>
 
-
-                                    <div>
-                                        <b>特別適合</b>：<span class="emphasize">愛乾淨，想要「定期預約」的您！</span> <br>
-                                        想獨享專屬於您的居家清潔體驗？ <br>
-                                        我們為定期預約的您，提供最像好朋友默契的客製化服務！<br>
-                                    </div>
                                     <br>
 
                                     <div class="control-group radio_buttons optional order_is_want_longterm"><label
                                             class="radio_buttons optional control-label"><span
                                             class="emphasize">請問您有「定期預約」的需求？</span></label>
-                                        <div class="controls"><label class="radio"><input class="radio_buttons optional"
+                                        <div class="controls"><label class="radio"><input ng-click="setRepeat(true)" class="radio_buttons optional"
                                                                                           id="order_is_want_longterm_true"
                                                                                           name="order[is_want_longterm]"
                                                                                           type="radio"
                                                                                           value="true">是的，需要「定期預約」。</label><label
-                                                class="radio"><input checked="checked" class="radio_buttons optional"
+                                                class="radio"><input ng-click="setRepeat(false)" checked="checked" class="radio_buttons optional"
                                                                      id="order_is_want_longterm_false"
                                                                      name="order[is_want_longterm]" type="radio"
                                                                      value="false">不用，目前只需要「單次」服務。</label>
                                         </div>
                                     </div>
-
-
-                                    <div id="service_price_level_1" style="display: none;">
-                                        <span class="emphasize">預約時間 * </span><br>
-                                    </div>
-
-                                    <div id="service_price_level_2" style="">
-                                        <span class="emphasize">預約時間 * </span><br>
-                                    </div>
-
-                                    <div id="service_level1_time" style="display: none;">
-                                        <div class="morning">
-                                            <input id="order_detailed_time_0" name="order[detailed_time]"
-                                                   style="width:30px;"
-                                                   type="radio" value="0">早班 9:00 - 10:40
-                                        </div>
-                                        <div>
-                                            <input id="order_detailed_time_1" name="order[detailed_time]"
-                                                   style="width:30px;"
-                                                   type="radio" value="1">午班 2:00 - 3:40
-                                        </div>
-                                        <div>
-                                            <input id="order_detailed_time_2" name="order[detailed_time]"
-                                                   style="width:30px;"
-                                                   type="radio" value="2">晚班 5:30 - 7:10
+                                    <div id="repeat-need-questions" ng-show="repeat_need">
+                                        <div id="service_price_level_2" style="">
+                                            *預約時間<br>
                                         </div>
 
-                                    </div>
+                                        <div id="service_level2_time" style="">
+                                            <div class="morning">
+                                                <input id="repeat_order_detailed_time_3" name="repeat_order[detailed_time]"
+                                                       style="width:30px;"
+                                                       type="radio" value="3">早班 9:00 - 12:20
+                                            </div>
 
-                                    <div id="service_level2_time" style="">
-                                        <div class="morning">
-                                            <input id="order_detailed_time_3" name="order[detailed_time]"
-                                                   style="width:30px;"
-                                                   type="radio" value="3">早班 9:00 - 12:20
+                                            <div>
+                                                <input id="repeat_order_detailed_time_4" name="repeat_order[detailed_time]"
+                                                       style="width:30px;"
+                                                       type="radio" value="4">午班 2:00 - 5:20
+                                            </div>
+
                                         </div>
+                                        <br>
+                                        <div class="control-group check_boxes optional job_job_periods_period">
+                                            *希望預約時段 (可複選)：
 
-                                        <div>
-                                            <input id="order_detailed_time_4" name="order[detailed_time]"
-                                                   style="width:30px;"
-                                                   type="radio" value="4">午班 2:00 - 5:20
-                                        </div>
-
-                                    </div>
-
-                                    <div class="control-group check_boxes optional job_job_periods_period">
-                                        <label class="check_boxes optional control-label">*希望預約時段 (可複選)：</label>
-
-                                        <div class="controls">
-                                            <label class="checkbox inline"><input class="check_boxes optional"
-                                                                                  rel="wish_wday"
-                                                                                  name="wish_wday[]" type="checkbox"
-                                                                                  value="週一">週一</label>
-                                            <label class="checkbox inline"><input class="check_boxes optional"
-                                                                                  rel="wish_wday"
-                                                                                  name="wish_wday[]" type="checkbox"
-                                                                                  value="週二">週二</label>
-                                            <label class="checkbox inline"><input class="check_boxes optional"
-                                                                                  rel="wish_wday"
-                                                                                  name="wish_wday[]" type="checkbox"
-                                                                                  value="週三">週三</label>
-                                            <label class="checkbox inline"><input class="check_boxes optional"
-                                                                                  rel="wish_wday"
-                                                                                  name="wish_wday[]" type="checkbox"
-                                                                                  value="週四">週四</label>
-                                            <label class="checkbox inline"><input class="check_boxes optional"
-                                                                                  rel="wish_wday"
-                                                                                  name="wish_wday[]" type="checkbox"
-                                                                                  value="週五">週五</label>
-                                            <label class="checkbox inline"><input class="check_boxes optional"
-                                                                                  rel="wish_wday"
-                                                                                  name="wish_wday[]" type="checkbox"
-                                                                                  value="週六">週六</label>
+                                            <div class="controls">
+                                                <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                      rel="wish_wday"
+                                                                                      name="wish_wday[]" type="checkbox"
+                                                                                      value="週一">週一</label>
+                                                <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                      rel="wish_wday"
+                                                                                      name="wish_wday[]" type="checkbox"
+                                                                                      value="週二">週二</label>
+                                                <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                      rel="wish_wday"
+                                                                                      name="wish_wday[]" type="checkbox"
+                                                                                      value="週三">週三</label>
+                                                <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                      rel="wish_wday"
+                                                                                      name="wish_wday[]" type="checkbox"
+                                                                                      value="週四">週四</label>
+                                                <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                      rel="wish_wday"
+                                                                                      name="wish_wday[]" type="checkbox"
+                                                                                      value="週五">週五</label>
+                                                <label class="checkbox inline"><input class="check_boxes optional"
+                                                                                      rel="wish_wday"
+                                                                                      name="wish_wday[]" type="checkbox"
+                                                                                      value="週六">週六</label>
+                                            </div>
                                         </div>
                                     </div>
-
+                                    <!--
+                                    <div>
+                                        <p class="help-block"><b>特別適合</b>：愛乾淨，想要「定期預約」的您！<br>
+                                        想獨享專屬於您的居家清潔體驗？ <br>
+                                        我們為定期預約的您，提供最像好朋友默契的客製化服務！<br></p>
+                                    </div>
+                                    -->
                                     <div class="control-group hidden job_job_periods_week_day">
                                         <div class="controls">
                                             <input class="hidden" id="job_job_periods_attributes_0_week_day"
@@ -344,7 +490,6 @@
                                                    value="1">
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -355,95 +500,28 @@
                 <div ng-show="progress==3">
                     <div class="span3"></div>
                     <div class="span9">
-                        <div id="room_info" style="">
 
-                            <div not_for_old_customer="1">
+                        <div>
+                            <label class="radio_buttons optional control-label"><span class="emphasize">*請問您希望的「付款方式」？</span> </lable><br>
 
-                                <div>
-                                    *自備吸塵器：
-                                    <input checked="checked" id="order_has_vacuum_cleaner_true"
-                                           name="order[has_vacuum_cleaner]" style="width:20px;" type="radio"
-                                           value="true"> 有
-                                    <input id="order_has_vacuum_cleaner_false" name="order[has_vacuum_cleaner]"
-                                           style="width:20px;" type="radio" value="false"> 無
-                                </div>
-
-                                <br style="clear: both;">
-
-                                <div>
-                                    *自備拖把：
-                                    <input checked="checked" id="order_has_mop_true" name="order[has_mop]"
-                                           style="width:20px;" type="radio" value="true"> 有
-                                    <input id="order_has_mop_false" name="order[has_mop]" style="width:20px;"
-                                           type="radio"
-                                           value="false"> 無
-                                </div>
-
-                                <br style="clear: both;">
-
-                                <div>
-                                    *自備抹布：&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input checked="checked" id="order_has_rag_true" name="order[has_rag]"
-                                           style="width:20px;" type="radio" value="true"> 有
-                                    <input id="order_has_rag_false" name="order[has_rag]" style="width:20px;"
-                                           type="radio"
-                                           value="false"> 無
-                                </div>
-
-                                <br style="clear: both;">
-
-                                <div class="control-group integer optional order_room_size">
-                                    <div class="controls">
-                                        *坪數： <input id="order_room_size" name="order[room_size]"
-                                                    onblur="check_room_size();"
-                                                    style="width: 50px;" type="text">
-                                        坪
-                                    </div>
-                                </div>
-                                <div class="control-group integer optional order_room_count">
-                                    <div class="controls">
-                                        *格局： <input id="order_room_count" name="order[room_count]"
-                                                    style="width: 50px;"
-                                                    type="text">
-                                        間房 <input id="order_bathroom_count" name="order[bathroom_count]"
-                                                  style="width: 50px;" type="text"> 間浴室
-                                    </div>
-                                </div>
-
-                                <div>
-                                    *屋齡：
-                                    <input checked="checked" id="order_room_age_5" name="order[room_age]"
-                                           style="width:20px;" type="radio" value="5">5年以下
-                                    <input id="order_room_age_5_10" name="order[room_age]" style="width:20px;"
-                                           type="radio"
-                                           value="5_10">5-10年
-                                    <input id="order_room_age_10_20" name="order[room_age]" style="width:20px;"
-                                           type="radio"
-                                           value="10_20"> 10-20年
-                                    <input id="order_room_age_20_30" name="order[room_age]" style="width:20px;"
-                                           type="radio"
-                                           value="20_30"> 20-30年
-                                    <input id="order_room_age_30" name="order[room_age]" style="width:20px;"
-                                           type="radio"
-                                           value="30"> 30 年以上
-                                </div>
-
+                            <div style="padding-left: 15px;">
                                 <br>
+                                <input checked="checked" id="order_payment_" name="order[payment]"
+                                       style="width:20px;"
+                                       type="radio" value="當日付現"> 當日付現
+                                <br><input id="payment_atm" name="order[payment]" style="width:20px;"
+                                           type="radio"
+                                           value="銀行匯款"> 銀行匯款，請填寫匯款帳號的後5碼 <input id="order_bank5code"
+                                                                                name="order[bank5code]"
+                                                                                style="width: 50px;"
+                                                                                type="text">，方便為您確認是本人。
 
 
                             </div>
-
                         </div>
-                    </div>
-                </div>
 
-                <!-- Step 5 -->
-                <div ng-show="progress==4">
-                    <div class="span3"></div>
-                    <div class="span9">
-
-                        <div>
-                            *請問您如何得知天天清潔？ <br>
+                        <div ng-if="newCustomer">
+                            <label class="radio_buttons optional control-label"> <span class="emphasize">*請問您如何得知天天清潔？ </span></label><br>
 
                             <div style="padding-left: 15px;">
                                 <input checked="checked" id="know_us_keyword" name="order[know_us]"
@@ -485,30 +563,10 @@
                         </div>
 
                         <br>
-                        <div>
-                            <span class="emphasize">*請問您希望的「付款方式」？</span> <br>
-
-                            <div style="padding-left: 15px;">
-                                <br>
-                                <input checked="checked" id="order_payment_" name="order[payment]"
-                                       style="width:20px;"
-                                       type="radio" value="當日付現"> 當日付現
-                                <br><input id="payment_atm" name="order[payment]" style="width:20px;"
-                                           type="radio"
-                                           value="銀行匯款">銀行匯款，請填寫匯款帳號的後5碼 <input id="order_bank5code"
-                                                                                name="order[bank5code]"
-                                                                                style="width: 50px;"
-                                                                                type="text">，方便為您確認是本人。
-
-
-                            </div>
-
-                            <br>
-                        </div>
 
                         <div class="control-group text optional order_note"><label
                                 class="text optional control-label"
-                                for="order_note">歡迎提供您特別在意的清潔需求：<br>
+                                for="order_note"><label class="radio_buttons optional control-label"><span class="emphasize">歡迎提供您特別在意的清潔需求：</span></label>
                             <div style="font-size:14px;">* 有危險性的清潔工作恕不在服務範圍內（如拆裝窗戶、清潔外部窗戶等）
                                 建議您先閱讀「服務特色」裡的注意事項。
                             </div>
@@ -544,10 +602,11 @@
                               我們會在 1 個工作日內，致電為您服務喔。
                         </div>
 
-
+                        <!--
                         <img alt="Button submit" onclick="check_submit();"
                              src="http://www.dailyclean.com.tw/assets/button_submit.png"
                              style="height: 174px; width: 175px; cursor: pointer;">
+                        -->
                         <br>
                     </div>
                 </div>
@@ -558,7 +617,9 @@
     <div class="row" style="margin-bottom: 50px">
         <div class="col-md-12 text-center">
             <button class="btn btnNormal btn-success" ng-click="prevStep()" ng-if="progress>0">上一步</button>
-            <button class="btn btnNormal btn-success" ng-click="nextStep()" ng-if="progress<steps.length-1">下一步</button>
+            <button class="btn btnNormal btn-success" ng-click="checkSubmit()" ng-if="progress<steps.length-1">下一步</button>
+
+            <button class="btn btnNormal btn-primary" ng-if="progress==steps.length-1" ng-click="checkSubmit();">確認送出</button>
         </div>
     </div>
 </div>
