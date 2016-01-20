@@ -87,9 +87,9 @@
                             <div class="controls">
 
                                 <div style="margin: 0 10px;float: left;width: 400px;">
-                                    <img src="img/first.png" width="300">
+                                    <img src="img/first.png" width="300" ng-click="setCustomer(true)" style="cursor:pointer;">
                                         <label style="margin:20px;" class="radio" for="order_is_old_customer_false"><input
-                                            checked="checked"
+                                            ng-checked="newCustomer==true"
                                             class="radio_buttons optional"
                                             id="order_is_old_customer_false"
                                             name="order[is_old_customer]"
@@ -97,11 +97,12 @@
                                             value="false" ng-click="setCustomer(true)">歡迎新朋友，想多認識您一下
                                         </label>
                                 </div>
-                                <div style="width:400px;margin: 0 40px 0 0;float:left">
-                                    <img src="img/old.png" width="300">
+                                <div style="width:400px;margin: 0 40px 0 0;float:left;">
+                                    <img src="img/old.png" width="300" ng-click="setCustomer(false)" style="cursor:pointer;">
                                     <label style="margin:20px;" class="radio" for="order_is_old_customer_true"><input
                                         class="radio_buttons optional"
                                         id="order_is_old_customer_true"
+                                        ng-checked="newCustomer==false"
                                         name="order[is_old_customer]" type="radio"
                                         value="true" ng-click="setCustomer(false)">嘿，好朋友，當然要讓您更方便囉
                                     </label>
@@ -117,31 +118,32 @@
                         居家清潔 (2位一起服務)
                         <br><br>
                         <div>
-                            <div style="width:250px;float:left;">
-                                <img src="img/100.png" style="margin:0 25px;">
+                            <div style="width:250px;float:left;" ng-click="setServiceLevel(0)">
+                                <img src="img/100.png" style="margin:0 25px;cursor: pointer;">
                                 <br>
                                 <div style="margin:20px 25px;width:200px;">
-                                <input id="service_level_0" name="order[service_level]" style="width:20px;"
+                                <input ng-checked="serviceLevel==0" id="service_level_0" name="order[service_level]" style="width:20px;"
                                    type="radio"
                                    value="0">
                                 <b>2490 元</b><br><br>適合定期有清潔。屋齡10年以下、或坪數 &lt; 30坪的客戶
                                 </div>
                             </div>
 
-                            <div style="width:250px;float:left;">
-                                <img src="img/200.png" style="margin:0 25px;">
+                            <div style="width:250px;float:left;" ng-click="setServiceLevel(1)">
+                                <img src="img/200.png" style="margin:0 25px;cursor: pointer;">
                                 <br>
                                 <div style="margin:20px 25px;width:200px;">
-                                    <input checked="checked" id="service_level_1" name="order[service_level]" style="width:20px;"type="radio" value="1">
+                                    <input ng-checked="serviceLevel==1" id="service_level_1" name="order[service_level]" style="width:20px;"type="radio" value="1">
                                 <b>4980 元</b><br><br>適合初次體驗清潔服務。屋齡10年以上、或坪數 &gt; 30坪的客戶
                                 </div>
                             </div>
 
-                            <div style="width:250px;float:left;">
-                                <img src="img/longterm.png" style="margin:0 25px;">
+                            <div style="width:250px;float:left;" ng-click="setServiceLevel(2)">
+                                <img src="img/longterm.png" style="margin:0 25px;cursor: pointer;">
                                 <br>
                                 <div style="margin:20px 25px;width:200px;">
                                 <input id="service_level_longterm" name="order[service_level]" style="width:20px;"
+                                   ng-checked="serviceLevel==2"
                                    type="radio"
                                    value="longterm">
                                 <b>服務券 20 張，49800 元</b><br><br>每張可兌換「100分鐘」服務，<b>免費送 2 張，現賺 4980 元</b>！<b>「０風險」承諾</b>：請放心，購買後的 1 個月內，無條件按照「禮券張數」退費。
