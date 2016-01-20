@@ -157,6 +157,10 @@ angular.module('dailyclean', [
         $rootScope.newCustomer = newCustomer;
     };
 
+    $rootScope.setServiceLevel = function(serviceLevel) {
+        $rootScope.serviceLevel = serviceLevel;
+    };
+
     $rootScope.setRepeat = function(repeat_need) {
         $rootScope.repeat_need = repeat_need;
     };
@@ -171,5 +175,6 @@ angular.module('dailyclean', [
         $rootScope.cleanDate = $rootScope.calendarSelected.format('YYYY-MM-DD');
     });
     $rootScope.newCustomer = true;
+    $rootScope.serviceLevel = 1;
     $rootScope.repeat_need = false;
 });
